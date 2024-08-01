@@ -25,7 +25,10 @@ pipeline {
          stage('Deploy to Test') {
             steps {
                 ansiblePlaybook(
-                    inventory: 'testserver',
+                    become:true,
+                    credentialsId:'ansible-key',
+                    disableHostKeyChecking:true,
+                    inventory: 'hosts',
                     playbook: 'ansible.yml'
                 )
             }
