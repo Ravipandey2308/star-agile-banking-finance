@@ -1,9 +1,9 @@
 pipeline {
     agent any
 
-     environment {
-        SSH_KEY = credentials('my-ssh-key') // Use the actual Jenkins SSH credential ID here
-    }
+    //  environment {
+    //     SSH_KEY = credentials('my-ssh-key') // Use the actual Jenkins SSH credential ID here
+    // }
     stages{
         stage('Build Maven'){
             steps{
