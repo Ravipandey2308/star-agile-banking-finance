@@ -36,7 +36,7 @@ pipeline {
             }
      }
         
-        // stage('Deploy with Ansible ') {
+        // stage('Deploy with Ansible.. ') {
         //     steps {
         //         sshagent(credentials: ['my-ssh-key']) { // Use the actual Jenkins SSH credential ID here
         //             sh '''
