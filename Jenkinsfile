@@ -26,7 +26,7 @@ pipeline {
             steps {
                 ansiblePlaybook(
                     inventory: '/etc/ansible/hosts',
-                    playbook: 'ansible-playbook.yml'
+                    playbook: 'ansible.yml'
                 )
             }
      }
