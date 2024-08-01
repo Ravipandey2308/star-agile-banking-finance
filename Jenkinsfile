@@ -1,5 +1,9 @@
 pipeline {
     agent any
+
+     environment {
+        SSH_KEY = credentials('my-ssh-key') // Use the actual Jenkins SSH credential ID here
+    }
     stages{
         stage('Build Maven'){
             steps{
@@ -22,19 +26,31 @@ pipeline {
                 }
             }
         }
-         stage('Deploy to Test') {
+     //     stage('Deploy to Test') {
+     //        steps {
+     //            ansiblePlaybook(
+     //                inventory: 'hosts',
+     //                playbook: '/home/ubuntu/deploy.yml'
+     //            )
+     //          //  ansiblePlaybook credentialsId: 'ansible-ssh-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: '/etc/ansible/hosts/', playbook: 'ansible.yml', vaultTmpPath: ''
+     //        }
+     // }
+        stage('Deploy with Ansible') {
             steps {
-                ansiblePlaybook(
-                    inventory: 'hosts',
-                    playbook: '/home/ubuntu/deploy.yml'
-                )
-              //  ansiblePlaybook credentialsId: 'ansible-ssh-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: '/etc/ansible/hosts/', playbook: 'ansible.yml', vaultTmpPath: ''
+                sshagent(credentials: ['my-ssh-key']) { // Use the actual Jenkins SSH credential ID here
+                    sh '''
+                    ansible-playbook -i inventory.ini ansible.yml --private-key $SSH_KEY
+                    '''
+                }
             }
-     }
+        }
 }
-    post {
-        always {
-            cleanWs()
+ post {
+        success {
+            echo 'Deployment succeeded.'
+        }
+        failure {
+            echo 'Deployment failed.'
         }
     }
 }
