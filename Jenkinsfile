@@ -29,7 +29,7 @@ pipeline {
                     credentialsId:'ansible-key',
                     disableHostKeyChecking:true,
                     inventory: 'hosts',
-                    playbook: 'deploy.yml'
+                    playbook: 'ansible.yml'
                 )
             }
      }
