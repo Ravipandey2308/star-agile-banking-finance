@@ -26,7 +26,7 @@ pipeline {
             steps {
                 ansiblePlaybook(
                     inventory: 'testserver',
-                    playbook: 'ansible.yml -i /var/lib/jenkins/workspace/Capstone\ project\ banking\ and\ finance/hosts'
+                    playbook: 'ansible.yml'
                 )
             }
      }
