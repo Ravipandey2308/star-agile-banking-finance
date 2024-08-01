@@ -26,15 +26,15 @@ pipeline {
                 }
             }
         }
-     //     stage('Deploy to Test') {
-     //        steps {
-     //            ansiblePlaybook(
-     //                inventory: 'hosts',
-     //                playbook: '/home/ubuntu/deploy.yml'
-     //            )
-     //          //  ansiblePlaybook credentialsId: 'ansible-ssh-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: '/etc/ansible/hosts/', playbook: 'ansible.yml', vaultTmpPath: ''
-     //        }
-     // }
+         stage('Deploy to Test') {
+            steps {
+                ansiblePlaybook(
+                    inventory: 'hosts',
+                    playbook: 'ansible.yml'
+                )
+              //  ansiblePlaybook credentialsId: 'ansible-ssh-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: '/etc/ansible/hosts/', playbook: 'ansible.yml', vaultTmpPath: ''
+            }
+     }
         
         // stage('Deploy with Ansible ') {
         //     steps {
