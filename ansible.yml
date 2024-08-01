@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: test
   become: true
   connection : ssh
   tasks:
