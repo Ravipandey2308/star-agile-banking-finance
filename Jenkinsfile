@@ -3,7 +3,7 @@ pipeline {
     stages{
         stage('Build Maven'){
             steps{
-                git url:'https://github.com/Ravipandey2308/star-agile-banking-finance/', branch: "master"
+                git url:'https://github.com/Ravipandey2308/star-agile-banking-finance.git', branch: "master"
                sh 'mvn clean install'
             }
         }
