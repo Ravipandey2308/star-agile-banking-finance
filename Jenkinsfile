@@ -31,7 +31,7 @@ pipeline {
                 //     inventory: 'hosts',
                 //     playbook: 'ansible.yml'
                 // )
-                ansiblePlaybook credentialsId: 'jenkinsAns', disableHostKeyChecking: true, installation: 'Ansible', inventory: '/etc/ansible/hosts/', playbook: '/home/ubuntu/deploy.yml', vaultTmpPath: ''
+                ansiblePlaybook credentialsId: 'jenkinsAns', disableHostKeyChecking: true, installation: 'Ansible', inventory: '/etc/ansible/hosts/', playbook: 'ansible.yml', vaultTmpPath: ''
             }
      }
 }
