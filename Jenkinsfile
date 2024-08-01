@@ -28,7 +28,7 @@ pipeline {
                     become:true,
                     credentialsId:'ansible-key',
                     disableHostKeyChecking:true,
-                    inventory: 'hosts',
+                    inventory: '/etc/ansible/hosts',
                     playbook: 'ansible-playbook.yml'
                 )
             }
