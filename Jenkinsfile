@@ -35,6 +35,7 @@ pipeline {
      //          //  ansiblePlaybook credentialsId: 'ansible-ssh-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: '/etc/ansible/hosts/', playbook: 'ansible.yml', vaultTmpPath: ''
      //        }
      // }
+        
         stage('Deploy with Ansible ') {
             steps {
                 sshagent(credentials: ['my-ssh-key']) { // Use the actual Jenkins SSH credential ID here
