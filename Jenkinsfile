@@ -26,7 +26,7 @@ pipeline {
             steps {
                 ansiblePlaybook(
                     inventory: 'hosts',
-                    playbook: 'ansible.yml'
+                    playbook: '/home/ubuntu/deploy.yml'
                 )
               //  ansiblePlaybook credentialsId: 'ansible-ssh-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: '/etc/ansible/hosts/', playbook: 'ansible.yml', vaultTmpPath: ''
             }
