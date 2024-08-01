@@ -25,7 +25,7 @@ pipeline {
          stage('Deploy to Test') {
             steps {
                 ansiblePlaybook(
-                    inventory: 'hosts',
+                    inventory: 'testserver',
                     playbook: 'ansible.yml'
                 )
             }
