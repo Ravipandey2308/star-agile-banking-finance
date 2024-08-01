@@ -1,0 +1,27 @@
+---
+- hosts: test
+  tasks:
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+        update_cache: yes
+
+    - name: Add user to Docker group
+      user:
+        name: ubuntu
+        groups: docker
+        append: yes
+
+    - name: Pull Java application Docker image
+      docker_image:
+        name:  ravi6748/capstoneproject:v1
+        source: pull
+
+    - name: Run Java application container
+      docker_container:
+        name: java-app
+        image:  ravi6748/capstoneproject:v1
+        state: started
+        ports:
+          - "8081:8081"
