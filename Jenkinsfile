@@ -28,24 +28,10 @@ pipeline {
         }
          stage('Deploy to Test') {
             steps {
-                ansiblePlaybook(
-                    inventory: 'hosts',
-                    playbook: 'ansible.yml'
-                )
-              //  ansiblePlaybook credentialsId: 'ansible-ssh-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: '/etc/ansible/hosts/', playbook: 'ansible.yml', vaultTmpPath: ''
+              ansiblePlaybook credentialsId: 'ansible-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts', playbook: 'ansible-playbook.yml', vaultTmpPath: ''
             }
      }
-        
-        // stage('Deploy with Ansible.. ') {
-        //     steps {
-        //         sshagent(credentials: ['my-ssh-key']) { // Use the actual Jenkins SSH credential ID here
-        //             sh '''
-        //             ansible-playbook -i inventory.ini ansible.yml --private-key $SSH_KEY
-        //             '''
-        //         }
-        //     }
-        // }
-}
+  }
  post {
         success {
             echo 'Deployment succeeded.'
