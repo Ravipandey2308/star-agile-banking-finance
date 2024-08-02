@@ -26,4 +26,4 @@
         image:  ravi6748/capstoneproject:v1
         state: started
         ports:
-          - "8084:8081"
+          - "8085:8081"
